@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugger Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Debugger Example</h2>
+        <p>Counter: <span id="counter">0</span></p>
+        <button onclick="increaseCounter()">Increase Counter</button>
+        <button onclick="debugFunction()">Trigger Debugger</button>
+        
+        <h3>Enter Name:</h3>
+        <input type="text" id="nameInput" oninput="updateName()" placeholder="Type your name">
+        <p id="greeting">Hello, Guest!</p>
+    </div>
+
+    <script>
+        let count = 0;
+
+        function increaseCounter() {
+            debugger; // Execution will pause here when clicking the button
+            count++;
+            document.getElementById("counter").textContent = count;
+            console.log("Counter increased:", count);
+        }
+
+        function debugFunction() {
+            debugger; // Pauses execution when this function runs
+            alert("Debugger is triggered!");
+        }
+
+        function updateName() {
+            let name = document.getElementById("nameInput").value;
+            document.getElementById("greeting").textContent = "Hello, " + name + "!";
+            
+            // Adding a debugger statement
+            debugger;
+            console.log("User entered:", name);
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+<!-- Steps to Debug
+Run the file: Open index.html in a browser (Chrome recommended).
+Open DevTools:
+Press F12 or Ctrl + Shift + I to open the Developer Tools.
+Go to the Sources tab.
+Interact with the page:
+Click the "Increase Counter" button → Execution will pause due to debugger;.
+Click the "Trigger Debugger" button → The debugger; will pause execution.
+Type in the input field → Execution pauses, and you can inspect name.
+Set Breakpoints manually:
+Open Sources in DevTools.
+Locate the script.
+Click on a line number to set a manual breakpoint. -->
